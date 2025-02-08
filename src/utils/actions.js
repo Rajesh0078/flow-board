@@ -2,8 +2,9 @@ export const addMember = async () => {
   try {
     const res = await fetch("https://randomuser.me/api");
     const data = await res.json();
-    console.log(data);
+    return data.results;
   } catch (error) {
+    alert(error.message);
     console.log(error);
   }
 };

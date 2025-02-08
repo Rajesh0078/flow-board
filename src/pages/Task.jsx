@@ -7,7 +7,7 @@ import Column from "../components/Column";
 import { getRandomColor } from "../utils/actions";
 
 const Task = () => {
-    const { state: { columns }, dispatch } = useStore();
+    const { state: { columns, tasks }, dispatch } = useStore();
 
     const onDragEnd = (result) => {
         if (!result.destination) return;
@@ -52,11 +52,13 @@ const Task = () => {
         dispatch({ type: "ADD_COLUMN", payload: col })
     }
 
-
-
     useEffect(() => {
         localStorage.setItem("kanbanColumns", JSON.stringify(columns));
     }, [columns]);
+
+    useEffect(() => {
+        localStorage.setItem("kanbanTasks", JSON.stringify(tasks));
+    }, [tasks])
 
     return (
         <div className="">
@@ -78,7 +80,7 @@ const Task = () => {
                 </div>
             </div>
 
-            <div>
+            <div className="h-[calc(100dvh-150px)]">
                 <DragDropContext onDragEnd={onDragEnd}>
                     <Droppable
                         droppableId="columns"
@@ -91,7 +93,7 @@ const Task = () => {
                     >
                         {(provided) => (
                             <div
-                                className="flex gap-4 overflow-x-auto pb-2"
+                                className="flex gap-4 overflow-x-auto pb-2 h-full "
                                 ref={provided.innerRef}
                                 {...provided.droppableProps}
                             >
@@ -101,7 +103,7 @@ const Task = () => {
                                             <div
                                                 ref={provided.innerRef}
                                                 {...provided.draggableProps}
-                                                className="bg-white p-1 rounded-[4px] shadow"
+                                                className="bg-white p-1 rounded-[4px] shadow h-full"
                                             >
                                                 <Column col={column} handlerProps={provided.dragHandleProps} />
                                             </div>

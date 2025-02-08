@@ -27,7 +27,6 @@ const Column = ({ col, handlerProps }) => {
         setShowModal(false)
     }
 
-
     const editColumn = (e) => {
         e.preventDefault();
         dispatch({
@@ -42,14 +41,11 @@ const Column = ({ col, handlerProps }) => {
         setFormData({ ...formData, [name]: value })
     }
 
-
     return (
-        <div className="rounded-[4px] bg-white shadow-sm min-w-[260px] aspect-square"
-            style={{
+        <div className="rounded-[4px] w-[260px] overflow-hidden">
+            <div className={`flex gap-1 items-center justify-between p-2 rounded-[4px] relative`} style={{
                 backgroundColor: `${col.color}82`,
-            }}
-        >
-            <div className={`flex gap-1 items-center justify-between p-2 rounded-[4px] mb-1 relative`}  {...handlerProps}>
+            }} {...handlerProps}>
                 <div className="flex gap-1 items-center ">
                     <MdDragIndicator className="text-xl" />
                     <h1 className="text-[14px] font-semibold " >
@@ -83,7 +79,12 @@ const Column = ({ col, handlerProps }) => {
                 ignoreContainerClipping={false}
             >
                 {(provided) => (
-                    <div ref={provided.innerRef} {...provided.droppableProps} className="h-full flex flex-col gap-2 px-2">
+                    <div
+                        ref={provided.innerRef}
+                        {...provided.droppableProps}
+                        className="h-[calc(100dvh-216px)] overflow-y-auto flex flex-col gap-2 p-2"
+                        style={{ scrollbarWidth: 'none', msOverflowStyle: 'none', scrollBehavior: "smooth" }}
+                    >
                         {myTasks.map((task, index) => (
                             <Draggable key={task.id} index={index} draggableId={task.id}>
                                 {(provided) => (
@@ -91,7 +92,7 @@ const Column = ({ col, handlerProps }) => {
                                         ref={provided.innerRef}
                                         {...provided.draggableProps}
                                         {...provided.dragHandleProps}
-                                        className="p-2 bg-white rounded-[4px] shadow"
+                                        className="bg-white rounded-[4px] shadow"
                                     >
                                         <TaskCard task={task} />
                                     </div>
@@ -134,7 +135,6 @@ const Column = ({ col, handlerProps }) => {
                                 </div>
                             </div>
 
-                            {/* Action Buttons */}
                             <div className="w-full flex gap-3 my-3">
                                 <button type="button" className="w-full bg-red-200 p-2 rounded-[4px]" onClick={closeModal}>
                                     Cancel

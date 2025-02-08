@@ -1,9 +1,13 @@
-import React from "react";
+import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
 import { FaPlus, FaChartBar } from "react-icons/fa6";
 import { FaBars, FaBell, FaProjectDiagram, FaTasks } from "react-icons/fa";
+import Modal from "./Modal";
+import AddTask from "./AddTask";
 
 const Header = () => {
+
+    const [openModal, setOpenModal] = useState(false)
 
     return (
         <header className="w-full flex justify-between items-center h-10">
@@ -42,10 +46,16 @@ const Header = () => {
                 <button className="text-gray-500 text-xl">
                     <FaBell />
                 </button>
-                <button className="h-full px-5 md:w-[180px] rounded-[4px] bg-primary text-white text-[16px] font-medium flex justify-center items-center gap-3 shadow-md hover:bg-primary-dark transition">
+                <button className="h-full px-5 md:w-[180px] rounded-[4px] bg-primary text-white text-[16px] font-medium flex justify-center items-center gap-3 shadow-md hover:bg-primary-dark transition" onClick={() => setOpenModal(true)}>
                     <FaPlus /> Add Task
                 </button>
             </div>
+            {
+                openModal &&
+                <Modal>
+                    <AddTask setOpenModal={setOpenModal} />
+                </Modal>
+            }
         </header>
     );
 };
