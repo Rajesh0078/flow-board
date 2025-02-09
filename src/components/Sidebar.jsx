@@ -29,10 +29,12 @@ const Sidebar = () => {
             </nav>
             <div className='mt-auto px-5 py-4 border-t'>
                 <div className='flex items-center gap-3'>
-                    <div className='h-10 w-10 bg-gray-300 rounded-full'></div>
+                    <div className='h-10 w-10 bg-gray-300 rounded-full overflow-hidden'>
+                        <img src="https://media.licdn.com/dms/image/v2/D5603AQH0Cvux9IwjrA/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1722768083783?e=1744848000&v=beta&t=OlMeiZ6R_CRG0d_SAkSJMPlo3RnERNMZYKG1LejamAU" alt="" className='h-full w-full' />
+                    </div>
                     <div className='text-sm'>
-                        <p className='font-semibold text-gray-800'>John Doe</p>
-                        <p className='text-xs text-gray-500'>john.doe@email.com</p>
+                        <p className='font-semibold text-gray-800'>Rajesh Peketi</p>
+                        <p className='text-xs text-gray-500'>peketirajesh007@gmail.com</p>
                     </div>
                 </div>
             </div>
