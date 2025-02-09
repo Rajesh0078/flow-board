@@ -1,70 +1,56 @@
-# Getting Started with Create React App
+# Flow board App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A simple Task Management application built with React. This app allows users to add, edit, delete, and mark tasks as complete. All tasks are persisted using the browser's local storage, meaning data will remain even after refreshing the page.
 
-## Available Scripts
+## Features
+- Add new tasks with a title and description
+- Add new Columns for additional boards
+- Edit existing tasks
+- Delete tasks
+- Data persistence using local storage
 
-In the project directory, you can run:
+## Installation
 
-### `npm start`
+1. Clone the repository:
+   ```sh
+   git clone https://github.com/Rajesh0078/flow-board
+   ```
+2. Navigate to the project directory:
+   ```sh
+   cd flow-board
+   ```
+3. Install dependencies:
+   ```sh
+   npm install --force
+   ```
+4. Start the development server:
+   ```sh
+   npm start
+   ```
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Usage
+- Open the app in the browser at `http://localhost:3000/`
+- Enter a task title and description, then click "Add Task" to create a task.
+- Use the edit button to modify a task.
+- Click the delete button to remove a task.
+- The tasks will be stored in the browser's local storage.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Local Storage Implementation
+The app uses `localStorage` to persist tasks. Whenever a task is added, edited, or deleted, the task list is updated in local storage. On app load, tasks are retrieved from local storage.
 
-### `npm test`
+## Technologies Used
+- React.js
+- Local Storage API
+- JavaScript (ES6+)
+- Tailwindcss
+- Context API (state management)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Future Enhancements
+- Add due dates and priority levels
+- Implement drag-and-drop task ordering
+- Add categories and filters
+- Sync with a backend (optional)
 
-### `npm run build`
+## License
+This project is open-source and available under the [MIT License](LICENSE).
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
