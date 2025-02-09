@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { FaSearch } from "react-icons/fa";
 import { FaFilter, FaPlus } from "react-icons/fa6";
 import { useStore } from "../store/store";
@@ -8,6 +8,7 @@ import { getRandomColor } from "../utils/actions";
 
 const Task = () => {
     const { state: { columns, tasks }, dispatch } = useStore();
+    const [searchTag, setSearchTag] = useState('')
 
     const onDragEnd = (result) => {
         if (!result.destination) return;
@@ -65,7 +66,7 @@ const Task = () => {
             <div className="h-10 p-5 bg-white shadow-sm rounded-[4px] my-5 flex justify-between items-center text-gray-500">
                 <div className="flex items-center gap-1">
                     <FaSearch className="text-[14px] mt-[2px]" />
-                    <input type="text" placeholder="search tasks...." className="outline-none px-2 hidden md:inline" />
+                    <input type="text" placeholder="search tasks...." className="outline-none px-2 hidden md:inline" onChange={(e) => setSearchTag(e.target.value)} />
                 </div>
                 <div className="flex items-center gap-4 text-[14px]">
                     <button className="flex items-center gap-2 font-semibold hover:text-primary" onClick={addColumn}>
@@ -105,7 +106,7 @@ const Task = () => {
                                                 {...provided.draggableProps}
                                                 className="bg-white p-1 rounded-[4px] shadow h-full"
                                             >
-                                                <Column col={column} handlerProps={provided.dragHandleProps} />
+                                                <Column col={column} handlerProps={provided.dragHandleProps} searchTag={searchTag} />
                                             </div>
                                         )}
                                     </Draggable>

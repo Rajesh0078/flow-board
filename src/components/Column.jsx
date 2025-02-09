@@ -7,7 +7,7 @@ import { MdDragIndicator } from "react-icons/md";
 import { FaEdit, FaTrash } from "react-icons/fa";
 import Modal from "./Modal";
 
-const Column = ({ col, handlerProps }) => {
+const Column = ({ col, handlerProps, searchTag }) => {
     const { state: { tasks }, dispatch } = useStore();
     const myTasks = col.taskIds.map((id) => tasks.find((task) => task.id === id)).filter(Boolean);
 
@@ -44,13 +44,17 @@ const Column = ({ col, handlerProps }) => {
     return (
         <div className="rounded-[4px] w-[260px] overflow-hidden">
             <div className={`flex gap-1 items-center justify-between p-2 rounded-[4px] relative`} style={{
-                backgroundColor: `${col.color}82`,
+                backgroundColor: `${col.color}80`,
             }} {...handlerProps}>
                 <div className="flex gap-1 items-center ">
                     <MdDragIndicator className="text-xl" />
                     <h1 className="text-[14px] font-semibold " >
                         {col.title}
                     </h1>
+                    {
+                        myTasks.length > 0 &&
+                        <p className="text-sm ms-2 mmb-1 text-gray-600 font-semibold">{myTasks.length}</p>
+                    }
                 </div>
                 <button onClick={() => setColDropDown(true)} className="h-5 w-6 text-end">
                     <BsThreeDotsVertical className="ms-2" />
@@ -85,7 +89,7 @@ const Column = ({ col, handlerProps }) => {
                         className="h-[calc(100dvh-216px)] overflow-y-auto flex flex-col gap-2 p-2"
                         style={{ scrollbarWidth: 'none', msOverflowStyle: 'none', scrollBehavior: "smooth" }}
                     >
-                        {myTasks.map((task, index) => (
+                        {myTasks.filter((task) => task.title.toLowerCase().includes(searchTag.toLowerCase())).map((task, index) => (
                             <Draggable key={task.id} index={index} draggableId={task.id}>
                                 {(provided) => (
                                     <div
